@@ -36,7 +36,7 @@ OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No cha
 
 | Skill | Description |
 |-------|-------------|
-| [humanizer-zh](skills/humanizer-zh) | 去除文本中的 AI 生成痕迹，使其更自然、更像人类书写 |
-| [kancolle-infographic](skills/kancolle-infographic) | From [QOrder](https://github.com/QOrder) |
-| [kirito-writing-style](skills/kirito-writing-style) | From [QOrder](https://github.com/QOrder) |
-| [notion-infographic](skills/notion-infographic) | From [QOrder](https://github.com/QOrder) |
+| [humanizer-zh](skills/humanizer-zh) | 去除文本中的 AI 生成痕迹，使其更自然、更像人类书写 From |
+| [kancolle-infographic](skills/kancolle-infographic) | 生成舰队Collection岛风风格的信息图和流程图 From [QOrder](https://docs.qoder.com/zh/qoderwork/skills)  |
+| [kirito-writing-style](skills/kirito-writing-style) | Kirito 博客写作风格指南，撰写技术博客、公众号文章 From [QOrder](https://docs.qoder.com/zh/qoderwork/skills)  |
+| [notion-infographic](skills/notion-infographic) | 根据参考文稿批量生成 Notion 风格手绘信息图组图 From [QOrder](https://docs.qoder.com/zh/qoderwork/skills)  |

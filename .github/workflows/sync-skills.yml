@@ -2,18 +2,22 @@ name: Daily Skills Sync
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天北京时间 08:00 自动运行
-  workflow_dispatch:      # 允许你在 GitHub 页面手动点击运行
+    - cron: '0 0 * * *' # 每天北京时间 08:00 运行
+  workflow_dispatch:      # 允许手动触发测试
+
+# 解决 Node.js 20 弃用警告的关键设置
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 赋予 Action 推送代码的权限
+      contents: write
 
     steps:
       - name: Checkout Your Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # 虽然它报警告，但设置 env 后它会强制在 Node 24 下运行
 
       - name: Sync Humanizer-zh (Single File)
         run: |
@@ -22,37 +26,32 @@ jobs:
 
       - name: Sync Obsidian-skills (Specific Folders)
         run: |
-          # 1. 临时克隆对方仓库（深度为 1 节省时间）
           git clone --depth 1 https://github.com/kepano/obsidian-skills.git temp_obsidian
-          
-          # 2. 确保本地 skills 目录存在
           mkdir -p skills
           
-          # 3. 定义需要同步的目录列表
+          # 定义需要同步的四个目标
           TARGETS=("json-canvas" "Obsidian-bases" "obsidian-cli" "Obsidian-markdown")
           
-          # 4. 循环同步
           for item in "${TARGETS[@]}"; do
-            # 如果远程存在该路径，则同步
             if [ -e "temp_obsidian/skills/$item" ]; then
+              echo "同步 $item 中..."
               rm -rf "skills/$item"
               cp -r "temp_obsidian/skills/$item" "skills/"
             fi
           done
           
-          # 5. 清理临时文件
           rm -rf temp_obsidian
 
       - name: Commit and Push Changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          
           git add skills/
           
-          # 检查是否有文件变动
           if git diff --quiet && git diff --staged --quiet; then
-            echo "No changes found, skipping commit."
+            echo "没有发现内容变化，跳过提交。"
           else
-            git commit -m "chore: auto-update skills from upstream"
-            git push
+            git commit -m "chore: 自动同步上游 Skills 变更"
+            git push origin HEAD
           fi
