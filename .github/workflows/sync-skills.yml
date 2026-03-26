@@ -1,0 +1,58 @@
+name: Daily Skills Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天北京时间 08:00 自动运行
+  workflow_dispatch:      # 允许你在 GitHub 页面手动点击运行
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 赋予 Action 推送代码的权限
+
+    steps:
+      - name: Checkout Your Repo
+        uses: actions/checkout@v4
+
+      - name: Sync Humanizer-zh (Single File)
+        run: |
+          mkdir -p skills/humanizer-zh
+          curl -L https://raw.githubusercontent.com/op7418/Humanizer-zh/main/SKILL.md -o skills/humanizer-zh/SKILL.md
+
+      - name: Sync Obsidian-skills (Specific Folders)
+        run: |
+          # 1. 临时克隆对方仓库（深度为 1 节省时间）
+          git clone --depth 1 https://github.com/kepano/obsidian-skills.git temp_obsidian
+          
+          # 2. 确保本地 skills 目录存在
+          mkdir -p skills
+          
+          # 3. 定义需要同步的目录列表
+          TARGETS=("json-canvas" "Obsidian-bases" "obsidian-cli" "Obsidian-markdown")
+          
+          # 4. 循环同步
+          for item in "${TARGETS[@]}"; do
+            # 如果远程存在该路径，则同步
+            if [ -e "temp_obsidian/skills/$item" ]; then
+              rm -rf "skills/$item"
+              cp -r "temp_obsidian/skills/$item" "skills/"
+            fi
+          done
+          
+          # 5. 清理临时文件
+          rm -rf temp_obsidian
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add skills/
+          
+          # 检查是否有文件变动
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes found, skipping commit."
+          else
+            git commit -m "chore: auto-update skills from upstream"
+            git push
+          fi
