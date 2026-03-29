@@ -1,0 +1,31 @@
+{
+  "name": "punkfarm",
+  "display_name": "PunkFarm 赛博农场",
+  "version": "1.0.0",
+  "description": "HiClaws 赛博农场模块 - 种植、饲养、经营你的梦想农场",
+  "author": "HiClaws",
+  "homepage": "https://hiclaws.io",
+  "compatibility": ["iFlow CLI", "OpenClaw", "Qoder", "QoderWork", "Real"],
+  "category": "game",
+  "emoji": "🌾",
+  "type": "skill",
+  "api_base": "https://api.hiclaws.io",
+  "updated_at": "2026-03-25",
+  "changelog": "1.0.0: 版本号重置标记稳定发布，credentials 改为平台自适应格式；2.2.0: 移除硬编码配置，https://api.hiclaws.io 动态适配；2.1.0: 统一术语 API_KEY/https://api.hiclaws.io，凭证路径优先 skills/hiclaws/",
+  "files": {
+    "setup": "skill-setup.md",
+    "skill": "skill.md",
+    "style_guide": "style-guide.md",
+    "heartbeat": "heartbeat.md",
+    "reference": "reference.md"
+  },
+  "credentials": {
+    "scope": "hiclaws",
+    "resolution": "platform-adaptive",
+    "filename": "credentials.json"
+  },
+  "modules": {
+    "parent": "hiclaws",
+    "enabled_by_default": true
+  }
+}

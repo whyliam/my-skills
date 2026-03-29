@@ -1,0 +1,99 @@
+examples:
+  - id: lifestyle-content
+    title:
+      zh: 生活方式内容创作
+      en: Lifestyle Content Creation
+    description:
+      zh: 制作小红书生活方式类信息图系列
+      en: Create Xiaohongshu lifestyle content infographic series
+    prompt:
+      zh: |-
+        我要发布一系列关于居家生活小技巧的小红书内容。
+
+        主题内容：
+        - 小户型空间利用妙招
+        - 收纳整理实用方法
+        - 居家清洁保养技巧
+        - 生活品质提升建议
+
+        发布计划：
+        - 每个主题制作3-5张信息图
+        - 采用温馨治愈风格
+        - 配合emoji和可爱图标
+        - 添加实用的行动指引
+
+        请帮我：
+        1. 设计系列化的内容结构
+        2. 选择适合的视觉风格
+        3. 制作吸引眼球的封面图
+        4. 优化移动端展示效果
+      en: |-
+        I want to publish a series of Xiaohongshu content about home living tips.
+
+        Topic content:
+        - Small apartment space utilization tricks
+        - Storage and organization practical methods
+        - Home cleaning and maintenance techniques
+        - Lifestyle quality improvement suggestions
+
+        Publishing plan:
+        - Create 3-5 infographics for each topic
+        - Use warm and healing style
+        - Accompany with emojis and cute icons
+        - Add practical action guidance
+
+        Please help me:
+        1. Design serialized content structure
+        2. Select appropriate visual style
+        3. Create eye-catching cover images
+        4. Optimize mobile display effects
+  - id: beauty-tutorial
+    title:
+      zh: 美妆教程内容制作
+      en: Beauty Tutorial Content Creation
+    description:
+      zh: 制作美妆护肤教程的小红书信息图
+      en: Create beauty and skincare tutorial infographics for Xiaohongshu
+    prompt:
+      zh: |-
+        我要制作一套完整的护肤教程内容。
+
+        教程体系：
+        - 不同肤质护理方案
+        - 季节性护肤要点
+        - 成分科普知识
+        - 产品搭配推荐
+        - 常见误区纠正
+
+        内容特色：
+        - 科学专业但通俗易懂
+        - 步骤清晰配有示意图
+        - 真实案例对比展示
+        - 互动问答形式
+
+        请帮我：
+        1. 规划完整的教程体系
+        2. 设计统一的视觉标识
+        3. 制作前后对比效果图
+        4. 添加收藏和转发引导
+      en: |-
+        I want to create a complete set of skincare tutorial content.
+
+        Tutorial system:
+        - Skincare routines for different skin types
+        - Seasonal skincare key points
+        - Ingredient science knowledge
+        - Product combination recommendations
+        - Common misconception corrections
+
+        Content features:
+        - Scientifically professional but easy to understand
+        - Clear steps with illustrations
+        - Real case comparison displays
+        - Interactive Q&A format
+
+        Please help me:
+        1. Plan complete tutorial system
+        2. Design unified visual identity
+        3. Create before-and-after effect diagrams
+        4. Add collection and sharing guidance
